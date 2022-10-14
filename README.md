@@ -84,7 +84,7 @@ Doctrine will handle the rest.
 ``` php
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
-
+use Ramsey\Uuid\UuidInterface;
 
 #[ORM\Entity]
 #[ORM\Table(name="products")]
