@@ -85,23 +85,16 @@ Doctrine will handle the rest.
 use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Doctrine\UuidGenerator;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="products")
- */
+
+#[ORM\Entity]
+#[ORM\Table(name="products")]
 class Product
 {
-    /**
-     * @var \Ramsey\Uuid\UuidInterface
-     *
-     * @ORM\Id
-     * @ORM\Column(type="uuid", unique=true)
-     * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class=UuidGenerator::class)
-     */
-    protected $id;
+    #[ORM\Id, ORM\GeneratedValue(strategy: 'CUSTOM'), ORM\CustomIdGenerator(class: UuidGenerator::class)]
+    #[ORM\Column(type: 'uuid', unique: true)]
+    protected UuidInterface $id;
 
-    public function getId()
+    public function getId():string
     {
         return $this->id;
     }
